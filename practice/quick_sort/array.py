@@ -1,14 +1,14 @@
 def partition(array, start, stop):
     pivot = array[stop]
 
-    i = start
+    i = start - 1
     for j in range(start, stop):
         if array[j] <= pivot:
-            array[i], array[j] = array[j], array[i - 1]
             i += 1
+            array[i], array[j] = array[j], array[i]
     i += 1
-    array[i - 1], array[stop] = array[stop], array[i - 1]
-    return i - 1
+    array[i], array[stop] = array[stop], array[i]
+    return i
 
 def quick_sort(array, start, stop):
     if(start < stop):
