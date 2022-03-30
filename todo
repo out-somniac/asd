@@ -1,2 +1,2 @@
  - [ ] Algorytm magicznych piątek w (practice/quick_sort/)
- 
+ - [ ] Napisać dlaczego w dowolnym momencie w classes/class3/less_stack.py głębokość wywołania rekurencyjnego może być max O(log(n)) 
