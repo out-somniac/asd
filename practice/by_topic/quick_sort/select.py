@@ -1,6 +1,5 @@
 def partition(array, start, stop):
     pivot = array[stop]
-
     i = start - 1
     for j in range(start, stop):
         if array[j] <= pivot:
