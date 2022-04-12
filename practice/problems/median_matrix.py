@@ -1,4 +1,5 @@
 from math import floor, sqrt
+from tkinter import N
 def partition(array, start, stop):
     pass
 
@@ -22,34 +23,12 @@ def prt(array):
         print("")
     print("")
 
-def linearize(T):
-    n = len(T)
-    array = [0]*n*n
-    for i in range(len(T)):
-        for j in range(len(T[0])):
-            array[i*n + j] = T[i][j]
-    array.sort()
-    return array
+def get_index(index, n):
+    row = index // n
+    col = index % n
 
 def Median(T):
-    sorted = linearize(T)
-    print(sorted)
-    n = len(T[0])
-    result = [[0 for i in range(n)] for j in range(n)]
-    for i, val in enumerate(sorted):
-        if i < (n * n - n) // 2:
-            row = floor((sqrt(1+8*i) - 1 ) / 2) + 1
-            col = (row * (row + 1) // 2) - i - 1
-            result[row][col] = val
-        elif i >= (n * n + n) // 2:
-            j = i - ((n * n + n) // 2)
-            col = floor((sqrt(1+8*j) - 1 ) / 2) + 1
-            row = (col * (col + 1) // 2) - j - 1
-            result[row][col] = val
-        else:
-            index = i - (n*n - n)//2
-            result[index][index] = val
-    return result
+    length = len(T[0])
 
 
 T = [ [ 2, 3, 5],

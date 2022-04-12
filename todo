@@ -1,2 +1,7 @@
  - [ ] Algorytm magicznych piątek w (practice/quick_sort/)
  - [ ] Napisać dlaczego w dowolnym momencie w classes/class3/less_stack.py głębokość wywołania rekurencyjnego może być max O(log(n)) 
+  - [ ] k posortowanych list
+    - [ ] heap aproach
+    - [ ] merge sort
+ - [ ] Struktura danych które w O(log(n)) robi insert, remove_median
+ - [ ] Implement k-anagram
