@@ -5,3 +5,4 @@
     - [ ] merge sort
  - [ ] Struktura danych które w O(log(n)) robi insert, remove_median
  - [ ] Implement dynamic downsizing in by_topic/queue/priority_queue.py
+ - [ ] LIS in O(nlog(n))
