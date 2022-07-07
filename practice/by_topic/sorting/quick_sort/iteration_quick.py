@@ -1,3 +1,5 @@
+# Quick-sort algorithm that omits using recursion by creating a recursion stack.
+
 def partition(array, start, stop):
     i = start - 1
     pivot = array[stop]
@@ -45,9 +47,7 @@ def iter_qsort(array, start, stop):
             top += 1;
             stack[top] = stop
 
-
-arr = [4, 3, 5, 2, 1, 3, 2, 3]
-n = len(arr)
-iter_qsort(arr, 0, n-1)
-for i in range(n):
-    print ("% d" % arr[i]),
+# Driver code
+array = [4, 3, 5, 2, 1, 3, 2, 3]
+iter_qsort(array, 0, len(array)-1)
+print(array),

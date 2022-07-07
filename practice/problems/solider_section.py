@@ -1,44 +1,42 @@
-# Mamy n żołnierzy różnego wzrostu i nieuporządkowaną tablicę, w której
-# podano wzrosty żołnierzy. Żołnierze zostaną ustawieni na placu w szeregu malejąco względem
-# wzrostu. Proszę zaimplementować funkcję:
-# section(T,p,q)
-# która zwróci tablicę ze wzrostami żołnierzy na pozycjach od p do q włącznie. Użyty algorytm
-# powinien być możliwie jak najszybszy. Proszę w rozwiązaniu umieścić 1-2 zdaniowy opis
-# algorytmu oraz proszę oszacować jego złożoność czasową
+# We're given n soliders, each with a different height and number p <= q <= n
+# p and q define indexes in the sorted array
+# We're supposet to return an array (not necessarily) that contains all elements from p to q in the sorted array.
 
-from math import floor
-from random import randint
+# The solution is to find the p-th and q-th values in the sorted array (low, high). This takes O(n) time since the select function is O(n)
+# After that we take all the elemets from array that satisfy the condition low <= element <= high
 
-def heapify(array, size, index):
-    smallest = index
-    left = 2 * index + 1
-    right = 2 * index + 2
+def partition(array, start, stop):
+    pivot = array[stop]
+    i = start - 1
+    for j in range(start, stop):
+        if array[j] <= pivot:
+            i += 1
+            array[i], array[j] = array[j], array[i]
+    i += 1
+    array[i], array[stop] = array[stop], array[i]
+    return i
 
-    if left < size and array[left] < array[smallest]:
-        smallest = left
-    if right < size and array[right] < array[smallest]:
-        smallest = right
-    if smallest != index:
-        array[index], array[smallest] = array[smallest], array[index]
-        heapify(array, size, smallest)
+def select(array, start, stop, k):
+    if stop == start:
+        return array[start]
+    if start < stop:
+        q = partition(array, start, stop)
+        if q == k:
+            return array[q]
+        elif q < k:
+            return select(array, q + 1, stop, k)
+        else:
+            return select(array, start, q - 1, k)
 
-def build_heap(array):
-    for i in range(floor(len(array) // 2), -1, -1):
-        heapify(array, len(array), i)
-
-def section(T, p, q):
+def section(array, p, q):
     result = [0 for i in range(q-p+1)]
-
-    size = len(T)
-    build_heap(T)
-    for i in range(0, p):
-        size -= 1
-        T[0], T[size] = T[size], T[0]
-        heapify(T, size, 0)
-    for i in range(q - p + 1):
-        size -= 1
-        result[i] = T[0]
-        T[0], T[size] = T[size], T[0]
-        heapify(T, size, 0)
+    low  = select(array, 0, len(array) - 1, p)
+    high  = select(array, 0, len(array) - 1, q)
+    index = 0
+    for elem in array:
+        if low <= elem <= high:
+            result[index] = elem
+            index += 1
+    
     return result
 

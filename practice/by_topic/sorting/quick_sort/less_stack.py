@@ -1,3 +1,8 @@
+# Quick sort algorithm that uses only O(log(n)) stack frames in the worst case scenario
+# This approach uses tail recursion optimisation
+# Worst case time complexity O(n^2)
+# Average case time complexity Θ(nlog(n))
+
 def partition(array, start, stop):
     pivot = array[stop]
     i = start - 1

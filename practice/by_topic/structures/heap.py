@@ -1,5 +1,13 @@
 from math import floor
 
+# Basic binary heap implementation
+# This structure implements operations like:
+#   - Insert element - O(log(n))
+#   - Extract min element - O(log(n))
+#   - Check if the heap is empty - O(1)
+# The structure can be improved by a lot. 
+# For example instead of using a static array we could use a amortized O(n) dynamic array.
+
 class Heap:
     def __init__(self, size):
         self.size = size
